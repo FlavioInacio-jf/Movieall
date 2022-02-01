@@ -1,23 +1,19 @@
-import { useState } from 'react';
-import { CardContainer, CardHeader, CardFooter, CardFooterWrapper, CardTitle, CardSubtitle, CardOption, CardButton } from './styles';
+import { useEffect, useRef, useState } from 'react';
+import { BsFillStarFill, BsLink45Deg, BsSuitHeart, BsSuitHeartFill } from 'react-icons/bs';
 
-import { BsFillGridFill, BsFillStarFill, BsLink45Deg, BsSuitHeart } from 'react-icons/bs';
+import { CardContainer, CardHeader, CardFooter, CardFooterWrapper, CardTitle, CardSubtitle, CardOption, FormGroupInput, InputChekbox, Label } from './styles';
+
+import Link from '../Link';
+import Info from '../Info';
+import useFavorite from '../../Hooks/UseFavorite';
+import { TimerOptions } from 'timers';
 
 type MovieType = {
-  adult: boolean;
   backdrop_path: string;
-  genre_ids: number[];
   id: number;
-  original_language: string;
   original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
   release_date: string;
-  title: string;
-  video: boolean;
   vote_average: number;
-  vote_count: number;
 }
 
 
@@ -28,11 +24,13 @@ type CardProps = {
 
 
 const Card = ({ movie, width }: CardProps) => {
-  const [isShowOption, setShowOption] = useState(false);
+  const [ isShowOption, setShowOption ] = useState(false);
+  const { handleChange, handleCheked } = useFavorite();
 
   function handleOnMouse(state: boolean) {
     setShowOption(state);
   }
+
   return (
     <>
       <CardContainer
@@ -49,17 +47,40 @@ const Card = ({ movie, width }: CardProps) => {
             <CardTitle>{movie.original_title}</CardTitle>
             <CardSubtitle>{movie.release_date.slice(0, 4)}</CardSubtitle>
           </CardFooterWrapper>
-          <CardButton type='button'><BsFillGridFill /></CardButton>
         </CardFooter>
 
         {
           isShowOption &&
           <CardOption>
-            <CardButton fontSize='2.4rem' color=''><BsSuitHeart /></CardButton>
-            <CardButton fontSize='2.4rem'><BsLink45Deg /></CardButton>
+            <FormGroupInput>
+              <InputChekbox
+                type="checkbox"
+                value={movie.id}
+                id="favorite"
+                checked={handleCheked(movie.id.toString())}
+                onChange={handleChange}
+              />
+              <Label
+                htmlFor='favorite'
+                id='favorite'
+              >
+                 {handleCheked(movie.id.toString()) ? <BsSuitHeartFill /> : <BsSuitHeart /> }
+
+              </Label>
+            </FormGroupInput>
+            <Link
+              to={`/movie/${movie.id}`}
+              fontSize='2.4rem'
+              hover='--secondary-color'
+              color='--neutrals-000'
+            >
+              <BsLink45Deg />
+            </Link>
           </CardOption>
         }
       </CardContainer>
+
+      {/* {handleCheked(movie.id.toString()) && <Info movieName={movie.original_title} textInfo='add in favorite' />} */}
     </>
   )
 }

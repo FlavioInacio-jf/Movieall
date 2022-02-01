@@ -1,14 +1,21 @@
+import { BsFillHouseDoorFill, BsHeartFill } from 'react-icons/bs';
+import { useLocation } from 'react-router-dom';
 
-import { BsFillHouseDoorFill, BsFillStarFill } from 'react-icons/bs';
-import { Brand, HeaderWrapper, Link, List } from './styles';
+import { Brand, HeaderWrapper, List } from './styles';
+import Link from '../Link';
 
 const Header = () => {
+  const { pathname } = useLocation();
   return (
     <HeaderWrapper>
       <Brand href="/">M</Brand>
       <List>
-        <li><Link className="active" href="/movies" title=""><BsFillHouseDoorFill /></Link></li>
-        <li><Link href="/"><BsFillStarFill /></Link></li>
+        <li>
+          <Link to="/" title="Home" className={pathname === "/" ? "active" : ""}><BsFillHouseDoorFill /></Link>
+        </li>
+        <li>
+          <Link to="/FavoritesMovies"  title='My favorites'className={pathname === "/FavoritesMovies" ? "active" : ""}><BsHeartFill /></Link>
+        </li>
       </List>
     </HeaderWrapper>
   );

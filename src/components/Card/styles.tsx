@@ -93,6 +93,24 @@ export const CardOption = styled.div `
   justify-content: center;
   gap: 1rem;
   z-index: 999;
+
+
+
+`
+export const FormGroupInput = styled.div `
+  position: relative;
+`
+
+export const InputChekbox = styled.input `
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+`
+
+export const Label = styled.label<{color?: string}> `
+  font-size: 2rem;
+  color: var(${({color}) => color ? color : "--secondary-color"});
 `
 
 export const CardsContainer = styled.div`

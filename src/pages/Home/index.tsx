@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
 
@@ -9,24 +8,19 @@ import { CardsContainer } from '../../components/Card/styles';
 
 import api from '../../services/api';
 import Card from '../../components/Card/Card';
-import Modal from '../../components/Modal/Modal';
+
 import Loader from '../../components/Loader';
+import { ContentBody, Contentheader, ContentHome, MainHome } from './styles';
+import useFavorite from '../../Hooks/UseFavorite';
+import Info from '../../components/Info';
+import { InfoContainerWrapper } from '../../components/Info/styles';
 
 type MovieType = {
-  adult: boolean;
   backdrop_path: string;
-  genre_ids: number[];
   id: number;
-  original_language: string;
   original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
   release_date: string;
-  title: string;
-  video: boolean;
   vote_average: number;
-  vote_count: number;
 }
 
 type MoviesType = {
@@ -35,27 +29,9 @@ type MoviesType = {
 }
 
 
-
-const MainHome = styled.main`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr;
-  overflow: hidden;
-
-`
-const ContentHome = styled.div`
-  padding: 0 2rem;
-`
-
-const Contentheader = styled.header`
-  padding: 2rem 0;
-`
-const ContentBody = styled.div`
-
-`
-
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState<MoviesType>();
+  const { favoritesNotification } = useFavorite();
 
   useEffect(() => {
     api.get('/popular')
@@ -63,9 +39,14 @@ const Home = () => {
         setPopularMovies(response.data);
       })
       .catch(error => {
-        throw new Error (error)
+        throw new Error(error)
       })
   }, []);
+
+  function searchById(id: string) {
+    return popularMovies?.results.find(movie => movie.id == Number(id));
+  }
+
 
   return (
     <Container>
@@ -93,18 +74,25 @@ const Home = () => {
         <ContentHome>
           <Contentheader>
             <Title>Popular movies</Title>
-            <label className='sr-only' htmlFor='search'>Search</label>
-            <input type="search" id='search' name='search' placeholder='Inform your search' />
           </Contentheader>
           <ContentBody>
             {
-              popularMovies && <Card movie={popularMovies.results[5]} width='50%'/>
+              popularMovies && <Card movie={popularMovies.results[5]} width='50%' />
             }
 
           </ContentBody>
         </ContentHome>
       </MainHome>
-
+      <InfoContainerWrapper>
+        {favoritesNotification.map(favorite => {
+          const movie = searchById(favorite)
+          const movieTitle = movie?.original_title || " "
+          return (
+            <Info key={favorite} movieName={movieTitle} id={favorite} />
+          )
+        })
+        }
+      </InfoContainerWrapper>
     </Container>
   )
 }
