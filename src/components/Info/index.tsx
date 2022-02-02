@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import useFavorite from '../../Hooks/UseFavorite';
+import useFavorite from '../../hooks/UseFavorite';
 import { InfoContainer, InfoText } from './styles';
 
 

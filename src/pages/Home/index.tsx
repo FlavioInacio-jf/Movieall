@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 
 
-import Header from '../../components/Header/Header';
+import Header from '../../components/Header';
 import Container from '../../components/Containert';
 import Title from '../../components/Title';
 import { CardsContainer } from '../../components/Card/styles';
 
 import api from '../../services/api';
-import Card from '../../components/Card/Card';
+import Card from '../../components/Card';
 
 import Loader from '../../components/Loader';
 import { ContentBody, Contentheader, ContentHome, MainHome } from './styles';
-import useFavorite from '../../Hooks/UseFavorite';
+import useFavorite from '../../hooks/UseFavorite';
 import Info from '../../components/Info';
 import { InfoContainerWrapper } from '../../components/Info/styles';
 

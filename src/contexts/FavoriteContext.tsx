@@ -1,4 +1,4 @@
-import { ChangeEvent, createContext, ReactNode, useEffect, useRef, useState} from "react";
+import { ChangeEvent, createContext, ReactNode, useState} from "react";
 
 
 type FavoriteContextType = {

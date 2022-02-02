@@ -49,6 +49,9 @@ const GlobalStyle = createGlobalStyle`
     pointer-events: visibleStroke;
     cursor: pointer;
   }
+  ul {
+    list-style-type: none;
+  }
 
 
   /* App fit Height */

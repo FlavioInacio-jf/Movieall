@@ -1,5 +1,5 @@
 import Container from "../../components/Containert"
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header";
 
 const FavoritesMovies = () => {
   return (

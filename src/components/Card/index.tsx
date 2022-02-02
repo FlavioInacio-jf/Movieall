@@ -1,12 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { BsFillStarFill, BsLink45Deg, BsSuitHeart, BsSuitHeartFill } from 'react-icons/bs';
 
 import { CardContainer, CardHeader, CardFooter, CardFooterWrapper, CardTitle, CardSubtitle, CardOption, FormGroupInput, InputChekbox, Label } from './styles';
 
 import Link from '../Link';
-import Info from '../Info';
-import useFavorite from '../../Hooks/UseFavorite';
-import { TimerOptions } from 'timers';
+import useFavorite from '../../hooks/UseFavorite';
 
 type MovieType = {
   backdrop_path: string;
