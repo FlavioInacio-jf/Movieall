@@ -125,6 +125,10 @@ export const InputChekbox = styled.input `
 export const Label = styled.label<{color?: string}> `
   font-size: 2rem;
   color: var(${({color}) => color ? color : "--secondary-color"});
+
+  @media (max-width: 720px) {
+    font-size: 3rem;
+  }
 `
 
 export const CardsContainerRows = styled.div<{height?: string; }>`

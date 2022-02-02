@@ -41,6 +41,7 @@ const Card = ({ movie, width, marginRight, marginBottom }: CardProps) => {
         marginBottom={marginBottom}
         onMouseEnter={() => handleOnMouse(true)}
         onMouseLeave={() => handleOnMouse(false)}
+        onClick={() => handleOnMouse(true)}
       >
         <CardHeader>
           <BsFillStarFill />{vote_average}/10

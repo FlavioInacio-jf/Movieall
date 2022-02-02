@@ -20,6 +20,10 @@ const Link = styled(LinkRouter)<{ fontSize?: string, textAlign?: string, lineHei
     font-weight: 700;
     color: var(--primary-color);
   }
+
+  @media (max-width: 720px) {
+    font-size: 3rem;
+  }
 `
 export default Link;
 
