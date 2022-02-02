@@ -11,6 +11,17 @@ export const ReviewContainer = styled.div `
   border: 0.1rem solid var(--neutrals-100);
   border-radius: 0.5rem;
   padding: 2rem;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
+
+  @media (max-width: 1080px) {
+    width: 80%;
+  }
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 `
 
 export const ReviewHeader = styled.header `

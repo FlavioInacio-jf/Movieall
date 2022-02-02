@@ -19,10 +19,17 @@ export const CardContainer = styled.div<{background : string, width?: string, ma
 
   @media (max-width: 1080px) {
     width: 40rem;
+    height: 20rem;
   }
   @media (max-width: 720px) {
-    width: 100vw;
+    min-width: 20rem;
     height: 20rem;
+    margin-right: 0;
+  }
+  @media (max-width: 576px) {
+    min-width: 100%;
+    height: 20rem;
+    margin-right: 0;
   }
 `
 
@@ -123,14 +130,17 @@ export const Label = styled.label<{color?: string}> `
 export const CardsContainerRows = styled.div<{height?: string; }>`
 
   height: ${({height})=> height ? height : "100vh"};
-  overflow: auto;
+  overflow: hidden;
   overflow-y: auto;
 
   padding-bottom: 6rem;
 
   @media (max-width: 1080px) {
     height: auto;
-    display: flex;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-flow: column;
 
     overflow: hidden;
     overflow-x: auto;
@@ -139,6 +149,15 @@ export const CardsContainerRows = styled.div<{height?: string; }>`
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  @media (max-width: 720px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+    gap: 2rem;
+  }
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
 
   }
 `

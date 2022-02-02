@@ -6,12 +6,11 @@ const Container = styled.div`
 
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 
-
-  @media (max-width: 1080px) {
+  @media (max-width: 1200px) {
     grid-template-columns: 1fr;
     width: 100%;
-    //height: auto;
   }
 
 `
