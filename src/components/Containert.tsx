@@ -9,6 +9,8 @@ const Container = styled.div`
   overflow: hidden;
 
   @media (max-width: 1200px) {
+    justify-content: flex-start;
+    align-items: center;
     grid-template-columns: 1fr;
     width: 100%;
   }
