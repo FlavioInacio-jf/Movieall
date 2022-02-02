@@ -72,7 +72,7 @@ const Home = () => {
           <CardsContainerRowsColumns>
             {
               tvShows.length > 0 &&
-              tvShows.map(show => <Card width='30rem' key={show.id} movie={show} marginRight="0"/>)
+              tvShows.map(show => <Card width='30rem' marginBottom='0' key={show.id} movie={show} marginRight="0"/>)
             }
           </CardsContainerRowsColumns>
           </div>

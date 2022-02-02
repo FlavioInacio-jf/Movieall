@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.div<{background : string, width?: string, marginRight?: string}>`
+export const CardContainer = styled.div<{background : string, width?: string, marginRight?: string, marginBottom?: string}>`
   width: ${({width}) => width ? width  : "auto"};
   height: auto;
 
@@ -17,7 +17,7 @@ export const CardContainer = styled.div<{background : string, width?: string, ma
 
   margin-right: ${({marginRight}) => marginRight ? marginRight: "2rem"};
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: ${({marginBottom}) => marginBottom ? marginBottom: "2rem"};
 `
 
 export const CardHeader = styled.header`
@@ -121,7 +121,20 @@ export const CardsContainerRows = styled.div<{height?: string; }>`
   overflow-y: auto;
 
   padding-bottom: 6rem;
-  scroll-behavior: smooth;
+
+  @media (max-width: 1080px) {
+    height: auto;
+    display: flex;
+
+    overflow: hidden;
+    overflow-x: auto;
+    padding-bottom: 0rem;
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  }
 `
 
 export const CardsContainerColumns = styled(CardsContainerRows)`
@@ -138,20 +151,36 @@ export const CardsContainerColumns = styled(CardsContainerRows)`
   padding-bottom: 0;
 
   padding-right: 2rem;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    height: auto;
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
 `
 export const CardsContainerRowsColumns =  styled(CardsContainerRows) `
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   flex-direction: row;
-  height: 100%;
+  justify-content: center;
 
   overflow-y: auto;
   height: calc(100vh - 20rem);
 
   padding-bottom: 15rem;
   padding-right: 2rem;
+
+  gap: 2rem;
+
+  @media (max-width: 1080px) {
+    justify-content: flex-start;
+    height: auto;
+    padding-right: 0;
+    padding-bottom: 2rem;
+    height: auto;
+  }
 `
 

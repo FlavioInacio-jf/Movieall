@@ -1,7 +1,5 @@
 import axios from "axios";
 import { ChangeEvent, createContext, ReactNode, useEffect, useState} from "react";
-import api from "../services/api";
-
 
 type FavoriteContextType = {
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -43,7 +41,7 @@ export const FavoriteContextProvider = ({children}: FavoriteContextProps) => {
   const [ popularMovies, setPopularMovies ] = useState<MovieType [] >([]);
   const [ topRatedMovies, setTopRatedMovies ] = useState<MovieType []>([]);
   const [ tvShows, setTvShows ] = useState<MovieType []>([]);
-  console.log(tvShows);
+
   useEffect(() => {
     axios.all(endpoints.map(endpoint => axios.get(endpoint)))
       .then(response => {
@@ -77,8 +75,8 @@ export const FavoriteContextProvider = ({children}: FavoriteContextProps) => {
     else {
       setFavoritesNotification(favoritesNotification.filter(id => id !== target.value));
     }
-
   }
+  console.log(favoritesMovies)
 
   function handleCheked(id: string) {
     return favoritesMovies.some( favorite => favorite.id === id);

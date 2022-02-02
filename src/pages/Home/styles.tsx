@@ -10,6 +10,17 @@ export const HomeMain = styled.main`
     "popularMovies topRated"
     "popularMovies tvShows";
 
+  @media (max-width: 1080px) {
+    overflow: auto;
+
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "popularMovies popularMovies"
+    "topRated topRated"
+    "tvShows tvShows";
+
+  }
+
 `
 export const HomeContent = styled.div<{gridArea: string}>`
   grid-area: ${({gridArea}) => gridArea};
@@ -18,7 +29,4 @@ export const HomeContent = styled.div<{gridArea: string}>`
 
 export const ContentHeader = styled.header`
   padding: 2rem 0;
-`
-export const ContentBody = styled.div`
-
 `

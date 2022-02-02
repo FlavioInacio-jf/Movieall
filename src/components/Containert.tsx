@@ -6,5 +6,13 @@ const Container = styled.div`
 
   width: 100vw;
   height: 100vh;
+
+
+  @media (max-width: 1080px) {
+    grid-template-columns: 1fr;
+    width: 100%;
+    //height: auto;
+  }
+
 `
 export default Container;

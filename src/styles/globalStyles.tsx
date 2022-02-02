@@ -96,7 +96,16 @@ const GlobalStyle = createGlobalStyle`
     display: none;
   }
 
-
+  @media (max-width: 1080px) {
+    html {
+      font-size: 56.25%;
+    }
+  }
+  @media (max-width: 720px) {
+    html {
+      font-size: 50%;
+    }
+  }
 `
 
 export default GlobalStyle;

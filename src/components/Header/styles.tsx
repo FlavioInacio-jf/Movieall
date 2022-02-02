@@ -11,6 +11,12 @@ export const HeaderWrapper = styled.header`
   padding: 2rem 0;
   gap: 2rem;
 
+  @media (max-width: 1080px) {
+    flex-direction: row;
+    padding: 2rem;
+    width: 100%;
+  }
+
 `
 export const Brand = styled(Link)`
   font: 400 2.4rem 'Inter', sans-serif;
@@ -37,5 +43,13 @@ export const List = styled.ul`
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
+
+
+  @media (max-width: 1080px) {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: 100%;
+  }
 
 `
