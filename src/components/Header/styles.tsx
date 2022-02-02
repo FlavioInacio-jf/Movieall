@@ -15,6 +15,9 @@ export const HeaderWrapper = styled.header`
     flex-direction: row;
     padding: 2rem;
     width: 100%;
+
+    align-self: start;
+    
   }
 
 `
