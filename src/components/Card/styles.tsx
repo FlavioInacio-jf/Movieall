@@ -121,6 +121,7 @@ export const CardsContainerRows = styled.div<{height?: string; }>`
   overflow-y: auto;
 
   padding-bottom: 6rem;
+  scroll-behavior: smooth;
 `
 
 export const CardsContainerColumns = styled(CardsContainerRows)`
@@ -151,5 +152,6 @@ export const CardsContainerRowsColumns =  styled(CardsContainerRows) `
   height: calc(100vh - 20rem);
 
   padding-bottom: 15rem;
+  padding-right: 2rem;
 `
 

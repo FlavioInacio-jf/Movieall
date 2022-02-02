@@ -28,7 +28,7 @@ const Home = () => {
       <HomeMain>
         <HomeContent gridArea='popularMovies'>
           <ContentHeader>
-            <Title>Popular movies</Title>
+            <Title color='--tertirary-color'>Popular movies</Title>
           </ContentHeader>
           <CardsContainerRows>
             {
@@ -68,12 +68,14 @@ const Home = () => {
           <ContentHeader>
             <Title color='--secondary-color'>Tv shows</Title>
           </ContentHeader>
+          <div>
           <CardsContainerRowsColumns>
             {
               tvShows.length > 0 &&
               tvShows.map(show => <Card width='30rem' key={show.id} movie={show} marginRight="0"/>)
             }
           </CardsContainerRowsColumns>
+          </div>
         </HomeContent>
       </HomeMain>
       <InfoContainerWrapper>
