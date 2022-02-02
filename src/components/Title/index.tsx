@@ -7,5 +7,8 @@ const Title = styled.h2<{fontFamily?: string, fontSize?: string, fontWeight?: st
   line-height: ${({lineHeight}) => lineHeight ? lineHeight : '2.7rem'};
   color: var(${({color}) => color ? color : "--neutrals-700"});
   margin: ${({margin}) => margin ? margin : 0};
+
+  display: flex;
+  align-items: center;
 `
 export default Title;
