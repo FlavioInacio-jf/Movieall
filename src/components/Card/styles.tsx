@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.div<{background : string, width?: string}>`
-  width: ${({width}) => width ? width  : "40rem"};
-  height: 20rem;
+export const CardContainer = styled.div<{background : string, width?: string, marginRight?: string}>`
+  width: ${({width}) => width ? width  : "auto"};
+  height: auto;
 
   border-radius: 1rem;
   background: -webkit-gradient(linear,left top, right top, from(rgba(0,0,0,.3))),
@@ -14,7 +14,8 @@ export const CardContainer = styled.div<{background : string, width?: string}>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 2rem;
+
+  margin-right: ${({marginRight}) => marginRight ? marginRight: "2rem"};
   position: relative;
   margin-bottom: 2rem;
 `
@@ -113,13 +114,42 @@ export const Label = styled.label<{color?: string}> `
   color: var(${({color}) => color ? color : "--secondary-color"});
 `
 
-export const CardsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  height: 100vh;
+export const CardsContainerRows = styled.div<{height?: string; }>`
+
+  height: ${({height})=> height ? height : "100vh"};
   overflow: auto;
+  overflow-y: auto;
 
   padding-bottom: 6rem;
 `
 
+export const CardsContainerColumns = styled(CardsContainerRows)`
+
+  width: 70vw;
+  height: 20rem;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-bottom: 0;
+
+  padding-right: 2rem;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+`
+export const CardsContainerRowsColumns =  styled(CardsContainerRows) `
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 100%;
+
+  overflow-y: auto;
+  height: calc(100vh - 20rem);
+
+  padding-bottom: 15rem;
+`
 

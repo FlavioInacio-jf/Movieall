@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Link as LinkRouter } from 'react-router-dom';
+import Link from "../Link";
 
 export const HeaderWrapper = styled.header`
 
@@ -12,7 +12,7 @@ export const HeaderWrapper = styled.header`
   gap: 2rem;
 
 `
-export const Brand = styled.a`
+export const Brand = styled(Link)`
   font: 400 2.4rem 'Inter', sans-serif;
   line-height: 3.6rem;
 
@@ -25,6 +25,10 @@ export const Brand = styled.a`
   padding: 1rem;
 
   cursor: pointer;
+
+  &:hover {
+    color: var(--neutrals-000);
+  }
 `
 export const List = styled.ul`
   list-style-type: none;

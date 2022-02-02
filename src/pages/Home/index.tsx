@@ -1,66 +1,40 @@
-import { useEffect, useState } from 'react';
-
+import { AiFillFire } from 'react-icons/ai';
 
 import Header from '../../components/Header';
 import Container from '../../components/Containert';
 import Title from '../../components/Title';
-import { CardsContainer } from '../../components/Card/styles';
+import { CardsContainerColumns, CardsContainerRows, CardsContainerRowsColumns } from '../../components/Card/styles';
 
-import api from '../../services/api';
+
 import Card from '../../components/Card';
 
 import Loader from '../../components/Loader';
-import { ContentBody, Contentheader, ContentHome, MainHome } from './styles';
+import { ContentHeader, HomeContent, HomeMain } from './styles';
 import useFavorite from '../../hooks/UseFavorite';
 import Info from '../../components/Info';
 import { InfoContainerWrapper } from '../../components/Info/styles';
 
-type MovieType = {
-  backdrop_path: string;
-  id: number;
-  original_title: string;
-  release_date: string;
-  vote_average: number;
-}
-
-type MoviesType = {
-  page: number;
-  results: MovieType[];
-}
-
-
 const Home = () => {
-  const [popularMovies, setPopularMovies] = useState<MoviesType>();
-  const { favoritesNotification } = useFavorite();
 
-  useEffect(() => {
-    api.get('/popular')
-      .then(response => {
-        setPopularMovies(response.data);
-      })
-      .catch(error => {
-        throw new Error(error)
-      })
-  }, []);
+  const { favoritesNotification, popularMovies, topRatedMovies, tvShows } = useFavorite();
 
   function searchById(id: string) {
-    return popularMovies?.results.find(movie => movie.id == Number(id));
+    return popularMovies.find(movie => movie.id == Number(id));
   }
-
 
   return (
     <Container>
       <Header />
-      <MainHome>
-        <ContentHome>
-          <Contentheader>
+      <HomeMain>
+        <HomeContent gridArea='popularMovies'>
+          <ContentHeader>
             <Title>Popular movies</Title>
-          </Contentheader>
-          <CardsContainer>
+          </ContentHeader>
+          <CardsContainerRows>
             {
-              popularMovies
+              popularMovies.length > 0
                 ?
-                popularMovies.results.map(movie => {
+                popularMovies.map(movie => {
                   return (
                     <Card key={movie.id} movie={movie} />
                   );
@@ -68,21 +42,40 @@ const Home = () => {
                 :
                 <Loader />
             }
-          </CardsContainer>
-        </ContentHome>
+          </CardsContainerRows>
+        </HomeContent>
 
-        <ContentHome>
-          <Contentheader>
-            <Title>Popular movies</Title>
-          </Contentheader>
-          <ContentBody>
+        <HomeContent gridArea='topRated'>
+          <ContentHeader>
+            <Title color='--primary-color'>Top rated <AiFillFire /></Title>
+          </ContentHeader>
+          <CardsContainerColumns>
             {
-              popularMovies && <Card movie={popularMovies.results[5]} width='50%' />
+              topRatedMovies.length > 0
+                ?
+                topRatedMovies.map(movie => {
+                  return (
+                    <Card width='20rem' key={movie.id} movie={movie} />
+                  );
+                })
+                :
+                <Loader />
             }
+          </CardsContainerColumns>
+        </HomeContent>
 
-          </ContentBody>
-        </ContentHome>
-      </MainHome>
+        <HomeContent gridArea='tvShows'>
+          <ContentHeader>
+            <Title color='--secondary-color'>Tv shows</Title>
+          </ContentHeader>
+          <CardsContainerRowsColumns>
+            {
+              tvShows.length > 0 &&
+              tvShows.map(show => <Card width='30rem' key={show.id} movie={show} marginRight="0"/>)
+            }
+          </CardsContainerRowsColumns>
+        </HomeContent>
+      </HomeMain>
       <InfoContainerWrapper>
         {favoritesNotification.map(favorite => {
           const movie = searchById(favorite)

@@ -1,4 +1,6 @@
-import { ChangeEvent, createContext, ReactNode, useState} from "react";
+import axios from "axios";
+import { ChangeEvent, createContext, ReactNode, useEffect, useState} from "react";
+import api from "../services/api";
 
 
 type FavoriteContextType = {
@@ -6,14 +8,30 @@ type FavoriteContextType = {
   handleCheked: (id: string) => boolean;
   favoritesNotification: string [];
   setFavoritesNotification: (array: string []) => void;
+  favoritesMovies: FavoritesMoviesType [];
+  popularMovies: MovieType [];
+  topRatedMovies: MovieType [];
+  tvShows: MovieType [];
 }
 type FavoriteContextProps = {
   children: ReactNode;
 }
 
+type MovieType = {
+  backdrop_path: string;
+  id: number;
+  original_title: string;
+  original_name?: string;
+  release_date?: string;
+  vote_average: number;
+}
+
 type FavoritesMoviesType = {
   id: string;
 }
+
+const endpoints = ["top_rated", "popular"];
+
 
 export const FavoriteContext = createContext({ } as FavoriteContextType);
 
@@ -21,6 +39,28 @@ export const FavoriteContextProvider = ({children}: FavoriteContextProps) => {
 
   const [ favoritesMovies, setFavoritesMovies ] = useState<FavoritesMoviesType []>([]);
   const [ favoritesNotification, setFavoritesNotification ] = useState<string []>([]);
+
+  const [ popularMovies, setPopularMovies ] = useState<MovieType [] >([]);
+  const [ topRatedMovies, setTopRatedMovies ] = useState<MovieType []>([]);
+  const [ tvShows, setTvShows ] = useState<MovieType []>([]);
+  console.log(tvShows);
+  useEffect(() => {
+    axios.all(endpoints.map(endpoint => axios.get(endpoint)))
+      .then(response => {
+        setTopRatedMovies(response[0].data.results);
+        setPopularMovies(response[1].data.results);
+
+      })
+      .catch(error => {
+        throw new Error(error)
+      })
+
+    axios.get("https://api.themoviedb.org/3/tv/popular")
+      .then(({data}) => setTvShows(data.results))
+      .catch(error => {
+        throw new Error(error)
+      })
+  }, []);
 
   function handleChange({target}: ChangeEvent<HTMLInputElement>) {
     if (target.checked) {
@@ -51,7 +91,11 @@ export const FavoriteContextProvider = ({children}: FavoriteContextProps) => {
           handleChange,
           handleCheked,
           favoritesNotification,
-          setFavoritesNotification
+          setFavoritesNotification,
+          favoritesMovies,
+          popularMovies,
+          topRatedMovies,
+          tvShows
         }
       }
     >

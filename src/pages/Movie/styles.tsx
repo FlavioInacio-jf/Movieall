@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MovieContent = styled.div `
+export const MovieMain = styled.main `
   width: 100%;
 
   display: grid;

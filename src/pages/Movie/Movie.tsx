@@ -6,7 +6,7 @@ import Container from '../../components/Containert';
 import Header from '../../components/Header';
 import Loader from '../../components/Loader';
 
-import { MovieContent } from './styles';
+import { MovieMain } from './styles';
 import MovieDetails from '../../components/MovieDetails';
 
 
@@ -75,7 +75,7 @@ const Movie = () => {
   return (
     <Container>
       <Header />
-      <MovieContent>
+      <MovieMain>
         {
           movieDetails
             ?
@@ -83,7 +83,7 @@ const Movie = () => {
             :
             <Loader />
         }
-      </MovieContent>
+      </MovieMain>
     </Container>
   )
 }

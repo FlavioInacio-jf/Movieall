@@ -1,17 +1,22 @@
 import styled from 'styled-components';
 
-export const MainHome = styled.main`
+export const HomeMain = styled.main`
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1fr 1fr;
   overflow: hidden;
 
+  grid-template-areas:
+    "popularMovies topRated"
+    "popularMovies tvShows";
+
 `
-export const ContentHome = styled.div`
+export const HomeContent = styled.div<{gridArea: string}>`
+  grid-area: ${({gridArea}) => gridArea};
   padding: 0 2rem;
 `
 
-export const Contentheader = styled.header`
+export const ContentHeader = styled.header`
   padding: 2rem 0;
 `
 export const ContentBody = styled.div`

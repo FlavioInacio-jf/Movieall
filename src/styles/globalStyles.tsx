@@ -149,6 +149,7 @@ const GlobalStyle = createGlobalStyle`
 
   *::-webkit-scrollbar {
     width: .6rem;
+    height: .7rem;
   }
 
   *::-webkit-scrollbar-track {
@@ -158,7 +159,7 @@ const GlobalStyle = createGlobalStyle`
 
   *::-webkit-scrollbar-thumb {
     border-radius: 2rem;
-    background: var(--neutrals-500);
+    background: var(--neutrals-300);
   }
   *::-webkit-scrollbar-button {
     display: none;

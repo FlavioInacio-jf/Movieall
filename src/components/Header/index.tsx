@@ -8,7 +8,7 @@ const Header = () => {
   const { pathname } = useLocation();
   return (
     <HeaderWrapper>
-      <Brand href="/">M</Brand>
+      <Brand to="/">M</Brand>
       <List>
         <li>
           <Link to="/" title="Home" className={pathname === "/" ? "active" : ""}><BsFillHouseDoorFill /></Link>

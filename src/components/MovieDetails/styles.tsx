@@ -32,12 +32,12 @@ export const MovieContentHeader = styled.header`
   align-items: center;
 `
 export const Description = styled.p`
-padding: 2rem 0;
 
 font-size: 1.6rem;
 line-height: 2.4rem;
 font-family: 'Inter', sans-serif;
 color: var(--neutrals-800);
+font-style: italic;
 max-width: 60%;
 text-align: center;
 `
@@ -94,8 +94,9 @@ li:nth-child(5) {
 export const MovieReviewsContainer = styled.div `
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 
   gap: 2rem;
+  padding-top: 2rem;
 `

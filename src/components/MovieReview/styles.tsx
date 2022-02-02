@@ -6,9 +6,7 @@ export const ReviewContainer = styled.div `
   justify-items: flex-start;
   align-items: flex-start;
 
-  max-width: 60%;
-
-  margin: 0 auto;
+  width: 60%;
 
   border: 0.1rem solid var(--neutrals-100);
   border-radius: 0.5rem;
@@ -24,6 +22,8 @@ export const ReviewHeader = styled.header `
 `
 
 export const AvatarReview = styled.div `
+  display: flex;
+  align-items: center;
   font-size: 2rem;
   color: var(--neutrals-400);
 
@@ -34,4 +34,6 @@ export const ReviewContent = styled.div `
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: var(--neutrals-500);
+  word-wrap: break-word;
+
 `

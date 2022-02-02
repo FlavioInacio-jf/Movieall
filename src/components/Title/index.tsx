@@ -10,5 +10,6 @@ const Title = styled.h2<{fontFamily?: string, fontSize?: string, fontWeight?: st
 
   display: flex;
   align-items: center;
+  gap: 1rem;
 `
 export default Title;
