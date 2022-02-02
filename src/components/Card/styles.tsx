@@ -9,8 +9,6 @@ export const CardContainer = styled.div<{background : string, width?: string, ma
               url("https://image.tmdb.org/t/p/w500${({background}) => background}") no-repeat left top;
   background-size: cover;
 
-
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,6 +16,14 @@ export const CardContainer = styled.div<{background : string, width?: string, ma
   margin-right: ${({marginRight}) => marginRight ? marginRight: "2rem"};
   position: relative;
   margin-bottom: ${({marginBottom}) => marginBottom ? marginBottom: "2rem"};
+
+  @media (max-width: 1080px) {
+    width: 40rem;
+  }
+  @media (max-width: 720px) {
+    width: 100vw;
+    height: 20rem;
+  }
 `
 
 export const CardHeader = styled.header`
@@ -176,11 +182,17 @@ export const CardsContainerRowsColumns =  styled(CardsContainerRows) `
   gap: 2rem;
 
   @media (max-width: 1080px) {
-    justify-content: flex-start;
-    height: auto;
+
     padding-right: 0;
     padding-bottom: 2rem;
     height: auto;
   }
+
+  @media (max-width: 720px) {
+
+    padding-right: 0;
+    padding-bottom: 2rem;
+    height: auto;
+ }
 `
 
