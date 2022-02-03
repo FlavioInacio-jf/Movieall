@@ -24,7 +24,7 @@ type MovieType = {
   vote_average: number;
 }
 
-const endpoints = ["top_rated", "popular"];
+const endpoints = ["movie/top_rated", "movie/popular"];
 
 
 export const DataContext = createContext({ } as FavoriteContextType);

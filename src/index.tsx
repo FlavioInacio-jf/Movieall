@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import { DataContextProvider } from './contexts/DataContext';
 import FavoritesMovies from './pages/FavoritesMovies';
-import Movie from './pages/Movie/Movie';
+import Details from './pages/Details';
 import NotFound from './pages/NotFound';
 import GlobalStyle from "./styles/globalStyles";
 
@@ -22,8 +22,8 @@ ReactDOM.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/FavoritesMovies" element={<FavoritesMovies />} />
-          <Route path="/movie/:id" element={<Movie />}/>
+          <Route path="/favoritesMovies" element={<FavoritesMovies />} />
+          <Route path="/details/:type/:id" element={<Details />}/>
           <Route path="*" element={<NotFound />}/>
         </Routes>
       </BrowserRouter>

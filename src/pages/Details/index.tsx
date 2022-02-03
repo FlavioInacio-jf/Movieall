@@ -21,6 +21,7 @@ type MovieBelongsCollectionType = {
 
 type movieDetailsType = {
   adult: false;
+  name?: string;
   backdrop_path: string;
   belongs_to_collection: MovieBelongsCollectionType;
   genres: MovieGenreType[];
@@ -50,9 +51,9 @@ type MoviesReviewsType = {
   results: MovieReviewType[];
 }
 
-const Movie = () => {
+const Details = () => {
 
-  const { id } = useParams();
+  const { type, id } = useParams();
   const endpoints = [`${id}`, `${id}/reviews`];
 
   const [movieDetails, setMovieDetails] = useState<movieDetailsType>();
@@ -60,11 +61,11 @@ const Movie = () => {
 
   useEffect(() => {
 
-    axios.all(endpoints.map(endpoint => axios.get(endpoint)))
+    axios.all(endpoints.map(endpoint => axios.get(`${type}/${endpoint}`)))
       .then(response => {
         setMovieDetails(response[0].data);
         setMovieReviews(response[1].data);
-        document.title = response[0].data.original_title;
+        document.title = response[0].data.original_title || response[0].data.name;
       })
       .catch(error => {
         throw new Error(error)
@@ -88,5 +89,5 @@ const Movie = () => {
   )
 }
 
-export default Movie;
+export default Details;
 

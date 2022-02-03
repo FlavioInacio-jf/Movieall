@@ -30,6 +30,7 @@ const Card = ({ movie, minWidth }: CardProps) => {
     setShowOption(state);
   }
   const { backdrop_path, vote_average, original_title, original_name, release_date, id } = movie;
+  const resource = original_title ? "movie" : "tv"
   return (
     <>
       <CardContainer
@@ -70,7 +71,7 @@ const Card = ({ movie, minWidth }: CardProps) => {
               </Label>
             </FormGroupInput>
             <Link
-              to={`/movie/${id}`}
+              to={`details/${resource}/${id}`}
               fontSize='2.4rem'
               hover='--secondary-color'
               color='--neutrals-000'

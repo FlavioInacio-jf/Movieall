@@ -13,6 +13,7 @@ type MovieBelongsCollectionType = {
 }
 type MovieDetailsType = {
   adult: false;
+  name?: string;
   backdrop_path: string;
   belongs_to_collection: MovieBelongsCollectionType;
   genres: MovieGenreType[];
@@ -49,7 +50,7 @@ const MovieDetails = ({ movieDetails, movieReviews }: MovieDetailsProps) => {
 
   const { poster_path, original_title,
     vote_average, tagline, genres,
-    overview, runtime, release_date } = movieDetails;
+    overview, runtime, release_date, name } = movieDetails;
   return (
     <>
       <MovieContentBanner >
@@ -57,7 +58,7 @@ const MovieDetails = ({ movieDetails, movieReviews }: MovieDetailsProps) => {
       </MovieContentBanner>
       <MovieContentBody>
         <MovieContentHeader>
-          <Title >{original_title} <Detail>{vote_average}</Detail></Title>
+          <Title >{original_title || name} <Detail>{vote_average}</Detail></Title>
           <Title
             color='--neutrals-400'
             fontSize='1.6rem'
@@ -72,8 +73,8 @@ const MovieDetails = ({ movieDetails, movieReviews }: MovieDetailsProps) => {
 
         <BadgeList>
           {genres.map(genre => <Badge key={genre.id}>{genre.name}</Badge>)}
-          <Detail>{(runtime / 60).toFixed(2)}h</Detail>
-          <Detail>{release_date}</Detail>
+          {runtime && <Detail>{(runtime / 60).toFixed(2)}h</Detail>}
+          { release_date && <Detail>{release_date}</Detail>}
         </BadgeList>
         <Description>{overview}</Description>
 
