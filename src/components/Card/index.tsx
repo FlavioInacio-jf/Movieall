@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BsFillStarFill, BsLink45Deg, BsSuitHeart, BsSuitHeartFill } from 'react-icons/bs';
 
-import { CardContainer, CardHeader, CardFooter, CardFooterWrapper, CardTitle, CardSubtitle, CardOption, FormGroupInput, InputChekbox, Label } from './styles';
+import { CardContainer, CardHeader, CardFooter, CardFooterWrapper, CardTitle, CardSubtitle, CardOption, FormGroupInput, InputChekbox, Label, CardWrapVote } from './styles';
 
 import Link from '../Link';
 import useFavorite from '../../hooks/UseData';
@@ -13,23 +13,25 @@ type MovieType = {
   original_title: string;
   release_date?: string;
   vote_average: number;
+  popularity: number;
 }
 
 
 type CardProps = {
   minWidth?: string;
   movie: MovieType;
+  ShowPopularity?: boolean;
 }
 
 
-const Card = ({ movie, minWidth }: CardProps) => {
+const Card = ({ movie, minWidth, ShowPopularity }: CardProps) => {
   const [ isShowOption, setShowOption ] = useState(false);
   const { handleChange, handleCheked } = useFavorite();
 
   function handleOnMouse(state: boolean) {
     setShowOption(state);
   }
-  const { backdrop_path, vote_average, original_title, original_name, release_date, id } = movie;
+  const { backdrop_path, vote_average, original_title, original_name, release_date, id, popularity } = movie;
   const resource = original_title ? "movie" : "tv"
   return (
     <>
@@ -41,8 +43,9 @@ const Card = ({ movie, minWidth }: CardProps) => {
         onClick={() => handleOnMouse(true)}
         onTouchMove={() => handleOnMouse(false)}
       >
-        <CardHeader>
-          <BsFillStarFill />{vote_average}/10
+        <CardHeader popularity = {ShowPopularity}>
+          {ShowPopularity && popularity}
+          <CardWrapVote><BsFillStarFill />{vote_average}/10</CardWrapVote>
         </CardHeader>
         <CardFooter>
           <CardFooterWrapper>

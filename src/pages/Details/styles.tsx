@@ -14,7 +14,7 @@ export const MovieMain = styled.main `
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "banner" "content";
-    overflow: auto;
+    overflow-y: auto;
   }
 
 `

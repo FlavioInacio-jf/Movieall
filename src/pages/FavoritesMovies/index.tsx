@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { BsFilter } from 'react-icons/bs';
 
 import Container from "../../components/Containert"
@@ -7,21 +7,53 @@ import Title from "../../components/Title";
 import useData from "../../hooks/UseData";
 import { FavoritesCardsContainer, FavoritesContent, FavoritesHeader, FavoritesMain } from "./styles";
 import Card from '../../components/Card';
-import Button from "../../components/Button";
-import BarFilters from "../../components/BarFilters";
+
+
+import { SelectWrapper, Select, Option } from "../../components/BarFilters/styles";
+
+type MovieType = {
+  backdrop_path: string;
+  id: number;
+  original_title: string;
+  original_name?: string;
+  release_date?: string;
+  vote_average: number;
+  popularity: number;
+}
 
 
 const FavoritesMovies = () => {
-  const [ isShowFilters, setShowFilters ] = useState(false);
-  const { favorites  } = useData();
 
   useEffect(() => {
     document.title = "My Favorites | Movieall"
   }, [])
 
-  function handleClick() {
-    setShowFilters(!isShowFilters);
+  const { favorites } = useData();
+  const [ favoritesFiltered, setFavoritesFiltered ] = useState<MovieType []>([]);
+  const [ popularity, setPopularity ] = useState("");
+
+  const orderCres = useCallback((a: MovieType, b: MovieType) => {
+    return a.popularity - b.popularity;
+  }, [])
+
+  const orderDesc = useCallback((a: MovieType, b: MovieType) => {
+    return b.popularity - a.popularity;
+  }, [])
+
+  function handleChangeSelect({target}: ChangeEvent<HTMLSelectElement>) {
+    setPopularity(target.value);
+
+    if (target.value === "1") {
+      setFavoritesFiltered(favoritesFiltered.sort(orderCres));
+    }
+    else {
+      setFavoritesFiltered(favoritesFiltered.sort(orderDesc));
+    }
+
   }
+  useEffect(() => {
+    setFavoritesFiltered(favorites);
+  }, [favorites])
 
   return (
     <Container>
@@ -30,18 +62,18 @@ const FavoritesMovies = () => {
         <FavoritesContent>
           <FavoritesHeader>
             <Title color="--primary-color">My Favorites</Title>
-            <Button type="button" onClick={handleClick}>
-              <BsFilter />
-              Filters
-            </Button>
+              <SelectWrapper>
+                <BsFilter />
+                <Select value={popularity} name="popularity" onChange={handleChangeSelect}>
+                  <Option value={""} disabled>Select</Option>
+                  <Option value={"1"}>Less popularity</Option>
+                  <Option value={"2"}>More popularity</Option>
+                </Select>
+              </SelectWrapper>
           </FavoritesHeader>
-          { isShowFilters && <BarFilters />}
-          <FavoritesCardsContainer>
-            {
-               favorites.length > 0 &&
 
-               favorites.map(movie => <Card key={movie.id} minWidth="30rem" movie={movie} />)
-            }
+          <FavoritesCardsContainer>
+            {favoritesFiltered.map(movie => <Card ShowPopularity key={movie.id} minWidth="30rem" movie={movie} />)}
           </FavoritesCardsContainer>
         </FavoritesContent>
       </FavoritesMain>

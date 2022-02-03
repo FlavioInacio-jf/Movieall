@@ -22,6 +22,7 @@ type MovieType = {
   original_name?: string;
   release_date?: string;
   vote_average: number;
+  popularity: number;
 }
 
 const endpoints = ["movie/top_rated", "movie/popular"];

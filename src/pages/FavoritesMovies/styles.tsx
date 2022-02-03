@@ -32,4 +32,8 @@ export const FavoritesCardsContainer = styled.div `
   align-items: flex-start;
 
   gap: 2rem;
+
+  @media (max-width: 720px) {
+    justify-content: center;
+  }
 `

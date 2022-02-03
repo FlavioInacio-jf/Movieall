@@ -23,22 +23,28 @@ export const CardContainer = styled.div<{background : string, minWidth?: string}
   }
 
   @media (max-width: 720px) {
-    min-width: 40rem;
+    min-width: calc(100vw - 20rem);
     min-height: 30rem;
   }
 
 `
 
-export const CardHeader = styled.header`
+export const CardHeader = styled.header<{popularity?: boolean}>`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: ${({popularity}) => popularity ? "space-between": 'flex-end'};
   gap: 1rem;
 
   padding: 2rem;
 
   font: 400 1.4rem 'Inter', sans-serif;
   color: var(--neutrals-000);
+
+`
+
+export const CardWrapVote = styled.span`
+  display: flex;
+  gap: 1rem;
 `
 
 export const CardFooter = styled.footer`

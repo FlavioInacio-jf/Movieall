@@ -59,6 +59,8 @@ export const Description = styled.p`
 
   @media (max-width: 720px) {
     max-width: 100%;
+    word-break: break-all;
+    word-wrap: break-word;
   }
 
 `
