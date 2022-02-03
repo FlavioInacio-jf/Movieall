@@ -22,7 +22,7 @@ type FavoritesMoviesType = {
 }
 
 const FavoritesMovies = () => {
-  const { favoritesMovies, popularMovies, tvShows, topRatedMovies  } = useFavorite();
+  const { favoritesMovies, popularMovies, tvShows, topRatedMovies, handleChange,   } = useFavorite();
   const [ listPopularMovies, setListPopularMovies ] = useState<MovieType []>([]);
 
   useEffect(() => {

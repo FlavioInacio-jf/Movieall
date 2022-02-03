@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HomeMain = styled.main`
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: calc(10rem - 100vw * 0.10rem) calc(10rem - 100vw * 0.90rem);
   grid-template-rows: 1fr 1fr;
   overflow: hidden;
 

@@ -55,7 +55,7 @@ const Home = () => {
                 ?
                 topRatedMovies.map(movie => {
                   return (
-                    <Card width='20rem' key={movie.id} movie={movie} />
+                    <Card key={movie.id} minWidth='20rem' movie={movie} />
                   );
                 })
                 :
@@ -72,7 +72,7 @@ const Home = () => {
           <CardsContainerRowsColumns>
             {
               tvShows.length > 0 &&
-              tvShows.map(show => <Card width='30rem' marginBottom='0' key={show.id} movie={show} marginRight="0"/>)
+              tvShows.map(show => <Card key={show.id} movie={show} />)
             }
           </CardsContainerRowsColumns>
           </div>

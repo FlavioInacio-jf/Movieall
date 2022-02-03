@@ -17,14 +17,12 @@ type MovieType = {
 
 
 type CardProps = {
-  width?: string;
+  minWidth?: string;
   movie: MovieType;
-  marginRight?: string;
-  marginBottom?: string;
 }
 
 
-const Card = ({ movie, width, marginRight, marginBottom }: CardProps) => {
+const Card = ({ movie, minWidth }: CardProps) => {
   const [ isShowOption, setShowOption ] = useState(false);
   const { handleChange, handleCheked } = useFavorite();
 
@@ -36,9 +34,7 @@ const Card = ({ movie, width, marginRight, marginBottom }: CardProps) => {
     <>
       <CardContainer
         background={backdrop_path}
-        width={width}
-        marginRight={marginRight}
-        marginBottom={marginBottom}
+        minWidth={minWidth}
         onMouseEnter={() => handleOnMouse(true)}
         onMouseLeave={() => handleOnMouse(false)}
         onClick={() => handleOnMouse(true)}

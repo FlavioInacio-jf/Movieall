@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.div<{background : string, width?: string, marginRight?: string, marginBottom?: string}>`
-  width: ${({width}) => width ? width  : "auto"};
+export const CardContainer = styled.div<{background : string, minWidth?: string}>`
+  width: auto;
   height: auto;
 
   border-radius: 1rem;
@@ -13,23 +13,13 @@ export const CardContainer = styled.div<{background : string, width?: string, ma
   flex-direction: column;
   justify-content: space-between;
 
-  margin-right: ${({marginRight}) => marginRight ? marginRight: "2rem"};
   position: relative;
-  margin-bottom: ${({marginBottom}) => marginBottom ? marginBottom: "2rem"};
 
-  @media (max-width: 1080px) {
-    width: 40rem;
-    height: 20rem;
-  }
-  @media (max-width: 720px) {
-    min-width: 20rem;
-    height: 20rem;
-    margin-right: 0;
-  }
-  @media (max-width: 576px) {
-    min-width: 100%;
-    height: 20rem;
-    margin-right: 0;
+  min-width: 20rem;
+  min-height: 20rem;
+
+  @media (min-width: 1080.01px) {
+    min-width: ${({minWidth}) => minWidth ? minWidth : "auto"};
   }
 `
 
@@ -132,12 +122,16 @@ export const Label = styled.label<{color?: string}> `
 `
 
 export const CardsContainerRows = styled.div<{height?: string; }>`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
   height: ${({height})=> height ? height : "100vh"};
   overflow: hidden;
   overflow-y: auto;
 
-  padding-bottom: 6rem;
+  padding-bottom: 10rem;
+  padding-right: 2rem;
 
   @media (max-width: 1080px) {
     height: auto;
@@ -148,12 +142,13 @@ export const CardsContainerRows = styled.div<{height?: string; }>`
 
     overflow: hidden;
     overflow-x: auto;
-    padding-bottom: 0rem;
+    padding-bottom: 2rem;
 
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
+
   @media (max-width: 720px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -166,20 +161,20 @@ export const CardsContainerRows = styled.div<{height?: string; }>`
   }
 `
 
-export const CardsContainerColumns = styled(CardsContainerRows)`
+export const CardsContainerColumns = styled.div`
 
   width: 70vw;
-  height: 20rem;
+  height: auto;
 
   display: flex;
   flex-wrap: nowrap;
+  flex-direction: row;
   justify-content: flex-start;
+  gap: 2rem;
+  padding-bottom: 2rem;
 
   overflow-x: scroll;
   overflow-y: hidden;
-  padding-bottom: 0;
-
-  padding-right: 2rem;
 
   @media (max-width: 1080px) {
     width: 100%;
@@ -190,13 +185,13 @@ export const CardsContainerColumns = styled(CardsContainerRows)`
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
 `
-export const CardsContainerRowsColumns =  styled(CardsContainerRows) `
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-
+export const CardsContainerRowsColumns =  styled.div `
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-flow: row;
   overflow-y: auto;
+
   height: calc(100vh - 20rem);
 
   padding-bottom: 15rem;
@@ -204,7 +199,13 @@ export const CardsContainerRowsColumns =  styled(CardsContainerRows) `
 
   gap: 2rem;
 
+  @media (min-width: 1081px) {
+    padding-bottom: 20rem;
+  }
   @media (max-width: 1080px) {
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-flow: row;
 
     padding-right: 0;
     padding-bottom: 2rem;
@@ -212,10 +213,12 @@ export const CardsContainerRowsColumns =  styled(CardsContainerRows) `
   }
 
   @media (max-width: 720px) {
+    grid-template-columns: 1fr 1fr;
 
-    padding-right: 0;
-    padding-bottom: 2rem;
-    height: auto;
- }
+  }
+
+  @media (max-width: 520px) {
+      grid-template-columns: 1fr;
+  }
 `
 

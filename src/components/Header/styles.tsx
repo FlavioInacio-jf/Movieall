@@ -11,13 +11,13 @@ export const HeaderWrapper = styled.header`
   padding: 2rem 0;
   gap: 2rem;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1080px) {
     flex-direction: row;
     padding: 2rem;
     width: 100%;
 
     align-self: start;
-    
+
   }
 
 `
@@ -48,7 +48,7 @@ export const List = styled.ul`
   gap: 2rem;
 
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1080px) {
     flex-direction: row;
     justify-content: flex-end;
 
