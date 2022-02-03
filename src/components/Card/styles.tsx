@@ -21,6 +21,12 @@ export const CardContainer = styled.div<{background : string, minWidth?: string}
   @media (min-width: 1080.01px) {
     min-width: ${({minWidth}) => minWidth ? minWidth : "auto"};
   }
+
+  @media (max-width: 720px) {
+    min-width: 40rem;
+    min-height: 30rem;
+  }
+
 `
 
 export const CardHeader = styled.header`

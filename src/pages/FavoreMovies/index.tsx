@@ -55,9 +55,8 @@ const FavoritesMovies = () => {
       <FavoritesMain>
         <FavoritesContent>
           <FavoritesHeader>
-            <Title color="--primary-color">My Favorites popular movies <BsSuitHeartFill /></Title>
+            <Title color="--primary-color">My Favorites<BsSuitHeartFill /></Title>
           </FavoritesHeader>
-
           <CardsContainerRows>
             {
               listPopularMovies.length > 0 &&
@@ -65,13 +64,6 @@ const FavoritesMovies = () => {
               listPopularMovies.map(movie =>  <Card key={movie.id} movie={movie} />)
             }
           </CardsContainerRows>
-
-        </FavoritesContent>
-
-        <FavoritesContent>
-          <FavoritesHeader>
-            <Title>My Favorites series</Title>
-          </FavoritesHeader>
         </FavoritesContent>
       </FavoritesMain>
     </Container>

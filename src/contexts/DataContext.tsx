@@ -76,7 +76,6 @@ export const DataContextProvider = ({children}: FavoriteContextProps) => {
       setFavoritesNotification(favoritesNotification.filter(id => id !== target.value));
     }
   }
-  console.log(favoritesMovies)
 
   function handleCheked(id: string) {
     return favoritesMovies.some( favorite => favorite.id === id);

@@ -47,4 +47,6 @@ export const InfoContainerWrapper = styled.div `
   flex-direction: column;
   align-items: flex-end;
   gap: 2rem;
+
+  z-index: 1000;
 `
