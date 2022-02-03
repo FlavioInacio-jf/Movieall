@@ -4,7 +4,7 @@ import { BsFillStarFill, BsLink45Deg, BsSuitHeart, BsSuitHeartFill } from 'react
 import { CardContainer, CardHeader, CardFooter, CardFooterWrapper, CardTitle, CardSubtitle, CardOption, FormGroupInput, InputChekbox, Label } from './styles';
 
 import Link from '../Link';
-import useFavorite from '../../hooks/UseFavorite';
+import useFavorite from '../../hooks/UseData';
 
 type MovieType = {
   backdrop_path: string;

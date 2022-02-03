@@ -10,13 +10,13 @@ import Card from '../../components/Card';
 
 import Loader from '../../components/Loader';
 import { ContentHeader, HomeContent, HomeMain } from './styles';
-import useFavorite from '../../hooks/UseFavorite';
+import UseData from '../../hooks/UseData';
 import Info from '../../components/Info';
 import { InfoContainerWrapper } from '../../components/Info/styles';
 
 const Home = () => {
 
-  const { favoritesNotification, popularMovies, topRatedMovies, tvShows } = useFavorite();
+  const { favoritesNotification, popularMovies, topRatedMovies, tvShows } = UseData();
 
   function searchById(id: string) {
     return popularMovies.find(movie => movie.id == Number(id));

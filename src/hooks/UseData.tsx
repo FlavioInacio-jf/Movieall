@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { FavoriteContext } from "../contexts/FavoriteContext"
+import { DataContext } from "../contexts/DataContext";
 
 const useFavorite = ( ) => {
-  const value = useContext(FavoriteContext);
+  const value = useContext(DataContext);
 
   return value;
 }

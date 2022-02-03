@@ -31,9 +31,9 @@ type FavoritesMoviesType = {
 const endpoints = ["top_rated", "popular"];
 
 
-export const FavoriteContext = createContext({ } as FavoriteContextType);
+export const DataContext = createContext({ } as FavoriteContextType);
 
-export const FavoriteContextProvider = ({children}: FavoriteContextProps) => {
+export const DataContextProvider = ({children}: FavoriteContextProps) => {
 
   const [ favoritesMovies, setFavoritesMovies ] = useState<FavoritesMoviesType []>([]);
   const [ favoritesNotification, setFavoritesNotification ] = useState<string []>([]);
@@ -83,7 +83,7 @@ export const FavoriteContextProvider = ({children}: FavoriteContextProps) => {
   }
 
   return (
-    <FavoriteContext.Provider value =
+    <DataContext.Provider value =
     {
         {
           handleChange,
@@ -98,6 +98,6 @@ export const FavoriteContextProvider = ({children}: FavoriteContextProps) => {
       }
     >
       {children}
-    </FavoriteContext.Provider>
+    </DataContext.Provider>
   );
 }

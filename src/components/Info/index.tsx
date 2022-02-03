@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import useFavorite from '../../hooks/UseFavorite';
+import useData from '../../hooks/UseData';
 import { InfoContainer, InfoText } from './styles';
 
 
@@ -8,7 +8,7 @@ type InfoProps = {
   movieName: string;
 }
 const Info = ({ movieName, id }: InfoProps) => {
-  const { setFavoritesNotification, favoritesNotification } = useFavorite();
+  const { setFavoritesNotification, favoritesNotification } = useData();
   const timeOutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {

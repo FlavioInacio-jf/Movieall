@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 import App from './App';
-import { FavoriteContextProvider } from './contexts/FavoriteContext';
+import { DataContextProvider } from './contexts/DataContext';
 import FavoritesMovies from './pages/FavoreMovies';
 import Movie from './pages/Movie/Movie';
 import GlobalStyle from "./styles/globalStyles";
@@ -16,7 +16,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 ReactDOM.render(
   <React.StrictMode>
-    <FavoriteContextProvider>
+    <DataContextProvider>
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
@@ -25,7 +25,7 @@ ReactDOM.render(
           <Route path="/movie/:id" element={<Movie />}/>
         </Routes>
       </BrowserRouter>
-    </FavoriteContextProvider>
+    </DataContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
