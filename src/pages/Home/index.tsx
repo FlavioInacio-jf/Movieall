@@ -17,11 +17,6 @@ import { InfoContainerWrapper } from '../../components/Info/styles';
 const Home = () => {
 
   const { favoritesNotification, popularMovies, topRatedMovies, tvShows } = UseData();
-
-  function searchById(id: string) {
-    return popularMovies.find(movie => movie.id == Number(id));
-  }
-
   return (
     <Container>
       <Header />
@@ -80,10 +75,10 @@ const Home = () => {
       </HomeMain>
       <InfoContainerWrapper>
         {favoritesNotification.map(favorite => {
-          const movie = searchById(favorite)
-          const movieTitle = movie?.original_title || " "
+          const { id, original_title, original_name } = favorite;
+          const title = original_name || original_title
           return (
-            <Info key={favorite} movieName={movieTitle} id={favorite} />
+            <Info key={id} movieName={title} id={id} />
           )
         })
         }

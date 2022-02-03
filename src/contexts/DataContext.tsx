@@ -2,11 +2,11 @@ import axios from "axios";
 import { ChangeEvent, createContext, ReactNode, useEffect, useState} from "react";
 
 type FavoriteContextType = {
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleCheked: (id: string) => boolean;
-  favoritesNotification: string [];
-  setFavoritesNotification: (array: string []) => void;
-  favoritesMovies: FavoritesMoviesType [];
+  handleChange: (event: ChangeEvent<HTMLInputElement>, movie: MovieType) => void;
+  handleCheked: (id: number) => boolean;
+  favoritesNotification: MovieType [];
+  setFavoritesNotification: (array: MovieType []) => void;
+  favorites: MovieType [];
   popularMovies: MovieType [];
   topRatedMovies: MovieType [];
   tvShows: MovieType [];
@@ -24,10 +24,6 @@ type MovieType = {
   vote_average: number;
 }
 
-type FavoritesMoviesType = {
-  id: string;
-}
-
 const endpoints = ["top_rated", "popular"];
 
 
@@ -35,8 +31,8 @@ export const DataContext = createContext({ } as FavoriteContextType);
 
 export const DataContextProvider = ({children}: FavoriteContextProps) => {
 
-  const [ favoritesMovies, setFavoritesMovies ] = useState<FavoritesMoviesType []>([]);
-  const [ favoritesNotification, setFavoritesNotification ] = useState<string []>([]);
+  const [ favorites, setFavorites ] = useState<MovieType []>([]);
+  const [ favoritesNotification, setFavoritesNotification ] = useState<MovieType []>([]);
 
   const [ popularMovies, setPopularMovies ] = useState<MovieType [] >([]);
   const [ topRatedMovies, setTopRatedMovies ] = useState<MovieType []>([]);
@@ -60,25 +56,23 @@ export const DataContextProvider = ({children}: FavoriteContextProps) => {
       })
   }, []);
 
-  function handleChange({target}: ChangeEvent<HTMLInputElement>) {
+  function handleChange({target}: ChangeEvent<HTMLInputElement>, movie: MovieType) {
+
     if (target.checked) {
-      setFavoritesMovies([...favoritesMovies, {["id"] : target.value}]);
-
+      setFavorites([...favorites, movie]);
     }
     else {
-      setFavoritesMovies(favoritesMovies.filter(favorite => favorite.id !== target.value));
+      setFavorites(favorites.filter(favorite => favorite.id !== movie.id));
     }
 
-    if (!favoritesNotification.includes(target.value)) {
-      setFavoritesNotification([target.value, ...favoritesNotification ]);
+    if (!favoritesNotification.includes(movie)) {
+      setFavoritesNotification([movie, ...favoritesNotification]);
     }
-    else {
-      setFavoritesNotification(favoritesNotification.filter(id => id !== target.value));
-    }
+
   }
 
-  function handleCheked(id: string) {
-    return favoritesMovies.some( favorite => favorite.id === id);
+  function handleCheked(id: number) {
+    return favorites.some( favorite => favorite.id === id);
   }
 
   return (
@@ -89,7 +83,7 @@ export const DataContextProvider = ({children}: FavoriteContextProps) => {
           handleCheked,
           favoritesNotification,
           setFavoritesNotification,
-          favoritesMovies,
+          favorites,
           popularMovies,
           topRatedMovies,
           tvShows

@@ -1,10 +1,10 @@
 import { useContext } from "react"
 import { DataContext } from "../contexts/DataContext";
 
-const useFavorite = ( ) => {
+const useData = ( ) => {
   const value = useContext(DataContext);
 
   return value;
 }
 
-export default useFavorite;
+export default useData;

@@ -102,10 +102,7 @@ export const CardOption = styled.div `
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  z-index: 999;
-
-
-
+  z-index: 1200;
 `
 export const FormGroupInput = styled.div `
   position: relative;

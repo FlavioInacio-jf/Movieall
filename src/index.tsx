@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import App from './App';
 import { DataContextProvider } from './contexts/DataContext';
-import FavoritesMovies from './pages/FavoreMovies';
+import FavoritesMovies from './pages/FavoritesMovies';
 import Movie from './pages/Movie/Movie';
 import NotFound from './pages/NotFound';
 import GlobalStyle from "./styles/globalStyles";

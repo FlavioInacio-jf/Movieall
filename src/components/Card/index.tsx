@@ -38,6 +38,7 @@ const Card = ({ movie, minWidth }: CardProps) => {
         onMouseEnter={() => handleOnMouse(true)}
         onMouseLeave={() => handleOnMouse(false)}
         onClick={() => handleOnMouse(true)}
+        onTouchMove={() => handleOnMouse(false)}
       >
         <CardHeader>
           <BsFillStarFill />{vote_average}/10
@@ -57,14 +58,14 @@ const Card = ({ movie, minWidth }: CardProps) => {
                 type="checkbox"
                 value={id}
                 id="favorite"
-                checked={handleCheked(id.toString())}
-                onChange={handleChange}
+                checked={handleCheked(id)}
+                onChange={(event) => handleChange(event, movie)}
               />
               <Label
                 htmlFor='favorite'
                 id='favorite'
               >
-                 {handleCheked(id.toString()) ? <BsSuitHeartFill /> : <BsSuitHeart /> }
+                 {handleCheked(id) ? <BsSuitHeartFill /> : <BsSuitHeart /> }
 
               </Label>
             </FormGroupInput>

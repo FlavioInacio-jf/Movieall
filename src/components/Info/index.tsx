@@ -4,7 +4,7 @@ import { InfoContainer, InfoText } from './styles';
 
 
 type InfoProps = {
-  id: string;
+  id: number;
   movieName: string;
 }
 const Info = ({ movieName, id }: InfoProps) => {
@@ -13,10 +13,11 @@ const Info = ({ movieName, id }: InfoProps) => {
 
   useEffect(() => {
     timeOutRef.current = setTimeout(() => {
-      setFavoritesNotification(favoritesNotification.filter( number => number !== id));
+      setFavoritesNotification(favoritesNotification.filter( movie => movie.id !== id));
   }, 4000);
-    return () => clearInterval(timeOutRef.current as NodeJS.Timeout);
-  }, [])
+    return () => clearTimeout(timeOutRef.current as NodeJS.Timeout);
+  }, [favoritesNotification, setFavoritesNotification, id])
+
 
   return (
     (
