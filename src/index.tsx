@@ -8,6 +8,7 @@ import App from './App';
 import { DataContextProvider } from './contexts/DataContext';
 import FavoritesMovies from './pages/FavoreMovies';
 import Movie from './pages/Movie/Movie';
+import NotFound from './pages/NotFound';
 import GlobalStyle from "./styles/globalStyles";
 
 axios.defaults.baseURL = process.env.REACT_APP_BASEURL;
@@ -23,6 +24,7 @@ ReactDOM.render(
           <Route path="/" element={<App />} />
           <Route path="/FavoritesMovies" element={<FavoritesMovies />} />
           <Route path="/movie/:id" element={<Movie />}/>
+          <Route path="*" element={<NotFound />}/>
         </Routes>
       </BrowserRouter>
     </DataContextProvider>
