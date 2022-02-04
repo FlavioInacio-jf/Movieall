@@ -60,28 +60,32 @@ const FavoritesMovies = () => {
       <Header />
       <FavoritesMain>
         <FavoritesContent>
-          <FavoritesHeader>
-            <Title color="--primary-color">My Favorites</Title>
-            <SelectWrapper>
-              <BsFilter />
-              <Select value={popularity} name="popularity" onChange={handleChangeSelect}>
-                <Option value={""} disabled>Select</Option>
-                <Option value={"1"}>Less popularity</Option>
-                <Option value={"2"}>More popularity</Option>
-              </Select>
-            </SelectWrapper>
-          </FavoritesHeader>
-
           {favoritesFiltered.length > 0
             ?
-            <FavoritesCardsContainer>
-              {favoritesFiltered.map(movie => <Card ShowPopularity key={movie.id} minWidth="30rem" movie={movie} />)}
-            </FavoritesCardsContainer>
+            <>
+              <FavoritesHeader>
+                <Title color="--primary-color">My Favorites</Title>
+                <SelectWrapper>
+                  <BsFilter />
+                  <Select value={popularity} name="popularity" onChange={handleChangeSelect}>
+                    <Option value={""} disabled>Select</Option>
+                    <Option value={"1"}>Less popularity</Option>
+                    <Option value={"2"}>More popularity</Option>
+                  </Select>
+                </SelectWrapper>
+              </FavoritesHeader>
+
+
+              <FavoritesCardsContainer>
+                {favoritesFiltered.map(movie => <Card ShowPopularity key={movie.id} minWidth="30rem" movie={movie} />)}
+              </FavoritesCardsContainer>
+            </>
+
             :
             <FavoritesEmpty>
               <FavoritesEmptyImage src="./images/empty.svg" alt="Empty" />
-              <Title color="--primary-color" fontSize="2.4rem"  lineHeight="3.6rem">No favorite </Title>
-              <Title  color="--neutrals-400" fontWeight="400" fontSize="1.6rem" lineHeight="2.4rem" textAlign="center">Please, select your favorites tv shows or movie for to see in this page</Title>
+              <Title color="--primary-color" fontSize="2.4rem" lineHeight="3.6rem">No favorite </Title>
+              <Title color="--neutrals-400" fontWeight="400" fontSize="1.6rem" lineHeight="2.4rem" textAlign="center">Please, select your favorites tv shows or movie for to see in this page</Title>
             </FavoritesEmpty>
 
           }
