@@ -84,7 +84,7 @@ const FavoritesMovies = () => {
             :
             <FavoritesEmpty>
               <FavoritesEmptyImage src="./images/empty.svg" alt="Empty" />
-              <Title color="--primary-color" fontSize="2.4rem" lineHeight="3.6rem">No favorite </Title>
+              <Title color="--primary-color" fontSize="2.4rem" lineHeight="3.6rem">No favorites </Title>
               <Title color="--neutrals-400" fontWeight="400" fontSize="1.6rem" lineHeight="2.4rem" textAlign="center">Please, select your favorites tv shows or movie for to see in this page</Title>
             </FavoritesEmpty>
 
