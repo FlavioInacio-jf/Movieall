@@ -1,24 +1,32 @@
 import styled from "styled-components";
 
 export const LoaderContainer = styled.div `
-  align-self: center;
-  margin: 0 auto;
 
   display: inline-block;
   position: relative;
-  width: 8rem;
-  height: 8rem;
+  width: 10px;
+  height: 10px;
+
+  &.medium {
+    width: 30px;
+    height: 30px;
+  }
+  &.large {
+    width: 40px;
+    height: 40px;
+  }
+
 `
 
-export const LoaderBar = styled.div<{left?: string, animationDelay?: string}>`
+export const LoaderBar = styled.div<{left: string, animationDelay: string, backgroundColor: string}>`
   display: inline-block;
   position: absolute;
-  left: ${(({left}) => left ? left : ".8rem")};
+  left: ${(({left}) => left)};
   width: 1.6rem;
-  background: var(--neutrals-200);
+  background: ${({backgroundColor}) => backgroundColor};
 
   animation: loaderAnimation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-  animation-delay: ${(({animationDelay}) => animationDelay ? animationDelay : "0")} ;
+  animation-delay: ${(({animationDelay}) => animationDelay)};
 
   @keyframes loaderAnimation {
     0% {
