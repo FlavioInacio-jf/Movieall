@@ -32,11 +32,15 @@ export const FavoritesCardsContainer = styled.div `
 
   display: grid;
   //grid-template-columns: 1fr 1fr 1fr;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   justify-content: flex-start;
   align-items: flex-start;
   gap: 2rem;
   padding-bottom: 2rem;
+
+  @media (max-width: 1080px) {
+    grid-template-columns: 1fr 1fr;
+  }
 
   @media (max-width: 720px) {
     grid-template-columns: 1fr;

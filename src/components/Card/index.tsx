@@ -28,6 +28,7 @@ const Card = ({ movie, minWidth, ShowPopularity }: CardProps) => {
   const [ isShowOption, setShowOption ] = useState(false);
   const { handleChange, handleCheked } = useFavorite();
 
+
   function handleOnMouse(state: boolean) {
     setShowOption(state);
   }
@@ -74,7 +75,7 @@ const Card = ({ movie, minWidth, ShowPopularity }: CardProps) => {
               </Label>
             </FormGroupInput>
             <Link
-              to={`details/${resource}/${id}`}
+              to={`/details/${resource}/${id}`}
               fontSize='2.4rem'
               hover='--secondary-color'
               color='--neutrals-000'
