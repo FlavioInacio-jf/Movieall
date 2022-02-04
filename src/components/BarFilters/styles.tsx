@@ -40,12 +40,13 @@ export const SelectWrapper = styled.div `
   gap: 1rem;
 
   font-size: 1.6rem;
-  border: 0.1rem solid var(--neutrals-200);
+  border: 0.1rem solid var(--neutrals-100);
   border-radius: 0.5rem;
   padding: 0 1rem;
 `
 
 export const Option = styled.option`
-
+  appearance: none;
+  padding: 1rem;
   margin-top: 2rem;
 `

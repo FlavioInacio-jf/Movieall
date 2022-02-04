@@ -4,8 +4,6 @@ import { ChangeEvent, createContext, ReactNode, useEffect, useState} from "react
 type FavoriteContextType = {
   handleChange: (event: ChangeEvent<HTMLInputElement>, movie: MovieType) => void;
   handleCheked: (id: number) => boolean;
-  favoritesNotification: MovieType [];
-  setFavoritesNotification: (array: MovieType []) => void;
   favorites: MovieType [];
   popularMovies: MovieType [];
   topRatedMovies: MovieType [];
@@ -33,8 +31,6 @@ export const DataContext = createContext({ } as FavoriteContextType);
 export const DataContextProvider = ({children}: FavoriteContextProps) => {
 
   const [ favorites, setFavorites ] = useState<MovieType []>([]);
-  const [ favoritesNotification, setFavoritesNotification ] = useState<MovieType []>([]);
-
   const [ popularMovies, setPopularMovies ] = useState<MovieType [] >([]);
   const [ topRatedMovies, setTopRatedMovies ] = useState<MovieType []>([]);
   const [ tvShows, setTvShows ] = useState<MovieType []>([]);
@@ -66,10 +62,6 @@ export const DataContextProvider = ({children}: FavoriteContextProps) => {
       setFavorites(favorites.filter(favorite => favorite.id !== movie.id));
     }
 
-    if (!favoritesNotification.includes(movie)) {
-      setFavoritesNotification([movie, ...favoritesNotification]);
-    }
-
   }
 
   function handleCheked(id: number) {
@@ -82,8 +74,6 @@ export const DataContextProvider = ({children}: FavoriteContextProps) => {
         {
           handleChange,
           handleCheked,
-          favoritesNotification,
-          setFavoritesNotification,
           favorites,
           popularMovies,
           topRatedMovies,

@@ -2,7 +2,8 @@ import styled from "styled-components"
 import Link from "../Link";
 
 export const HeaderWrapper = styled.header`
-
+  grid-column: 1;
+  
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -12,6 +13,7 @@ export const HeaderWrapper = styled.header`
   gap: 2rem;
 
   @media (max-width: 1080px) {
+    grid-row: 1;
     flex-direction: row;
     padding: 2rem;
     width: 100%;

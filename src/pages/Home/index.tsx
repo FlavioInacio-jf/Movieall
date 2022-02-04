@@ -11,12 +11,9 @@ import Card from '../../components/Card';
 import Loader from '../../components/Loader';
 import { ContentHeader, HomeContent, HomeMain } from './styles';
 import UseData from '../../hooks/UseData';
-import Info from '../../components/Info';
-import { InfoContainerWrapper } from '../../components/Info/styles';
-
 const Home = () => {
 
-  const { favoritesNotification, popularMovies, topRatedMovies, tvShows } = UseData();
+  const { popularMovies, topRatedMovies, tvShows } = UseData();
   return (
     <Container>
       <Header />
@@ -73,16 +70,6 @@ const Home = () => {
           </div>
         </HomeContent>
       </HomeMain>
-      <InfoContainerWrapper>
-        {favoritesNotification.map(favorite => {
-          const { id, original_title, original_name } = favorite;
-          const title = original_name || original_title
-          return (
-            <Info key={id} movieName={title} id={id} />
-          )
-        })
-        }
-      </InfoContainerWrapper>
     </Container>
   )
 }
