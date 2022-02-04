@@ -37,7 +37,10 @@ O projeto **[Movieall](https://movieall-git-master-flavioinacio-jf.vercel.app/)*
 
 ## ⚙️ Funcionalidades
 
-- 
+- Ver quais são os filmes mais populares
+- Ver quais são os filmes mais votados
+- Ver detalhes especificos de um determinado filme
+- Favoritar um filme
 ---
 
 
