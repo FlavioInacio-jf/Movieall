@@ -17,7 +17,7 @@
 
 
 <h4 align="center"> 
-	🚧  Movieall 👨🏾‍💻 Em desenvolvimento... 🚀 🚧
+	🚧  Movieall 👨🏾‍💻 Finalizado 🚀 🚧
 </h4>
 
 <p align="center">
@@ -32,7 +32,7 @@
 
 ## 💻 Sobre o projeto
 
-O projeto **[Movieall](https://movieall-git-master-flavioinacio-jf.vercel.app/)** foi desenvolvido em ReactJs.
+O projeto **[Movieall](https://movieall-git-master-flavioinacio-jf.vercel.app/)** foi desenvolvido utilizando o framework ReactJs.
 ---
 
 ## ⚙️ Funcionalidades
