@@ -32,7 +32,9 @@
 
 ## 💻 Sobre o projeto
 
-O projeto **[Movieall](https://movieall-git-master-flavioinacio-jf.vercel.app/)** foi desenvolvido utilizando o framework ReactJs.
+O projeto **[Movieall](https://movieall-git-master-flavioinacio-jf.vercel.app/)** foi desenvolvido utilizando o framework ReactJs. Css grid, Styled Components e responsividade foram algumas tecnologias utilizadas.
+
+OBS.: Esse projeto serviu como parte de um processo seletivo para estagio em desenvolvimento WEB. Eu fui aprovado! :)
 ---
 
 ## ⚙️ Funcionalidades
